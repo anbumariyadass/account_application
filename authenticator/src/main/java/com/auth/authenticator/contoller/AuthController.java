@@ -20,7 +20,6 @@ import com.auth.authenticator.dto.UserResponseDTO;
 import com.auth.authenticator.entity.User;
 import com.auth.authenticator.service.AuthenticationService;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @RestController
 @RequestMapping("/auth")

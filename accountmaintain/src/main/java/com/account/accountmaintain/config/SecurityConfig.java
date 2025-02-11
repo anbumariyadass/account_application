@@ -30,8 +30,8 @@ public class SecurityConfig {
 	                //.requestMatchers("/auth/allusers").hasAuthority("ROLE_ADMIN") // Role-based restriction
 	                //.requestMatchers("/users/allusers").hasAnyAuthority("ROLE_ADMIN", "ROLE_ACCOUNTANT") // 🔥 Role-based restriction
 	                //.requestMatchers("/users/allusers").hasAnyRole("ADMIN", "ACCOUNTANT") // Automatically prefixes "ROLE_"
-	                .anyRequest().authenticated() // All other endpoints require authentication
-	            		//.anyRequest().permitAll()
+	            	.anyRequest().authenticated() // All other endpoints require authentication
+	            	//.anyRequest().permitAll()
 	            )
 	            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Ensures no session is stored
 	            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class); // JWT authentication
