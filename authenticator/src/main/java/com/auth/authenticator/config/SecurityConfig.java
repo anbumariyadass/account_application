@@ -31,7 +31,7 @@ public class SecurityConfig {
 	        http
 	            .csrf(csrf -> csrf.disable()) // Disable CSRF for REST APIs
 	            .authorizeHttpRequests(auth -> auth
-	                .requestMatchers("/auth/register", "/auth/login").permitAll() // Public endpoints
+	                .requestMatchers("/auth/register", "/auth/login","/auth/userdetail/**").permitAll() // Public endpoints
 	                .requestMatchers("/auth/allusers").hasAuthority("ROLE_ADMIN") // Role-based restriction
 	                //.requestMatchers("/users/allusers").hasAnyAuthority("ROLE_ADMIN", "ROLE_ACCOUNTANT") // 🔥 Role-based restriction
 	                //.requestMatchers("/users/allusers").hasAnyRole("ADMIN", "ACCOUNTANT") // Automatically prefixes "ROLE_"

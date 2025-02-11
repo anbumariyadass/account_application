@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,9 @@ public class AuthenticationService {
     
     @Autowired
     private JwtUtil jwtUtil;
+    
+    @Autowired
+    private UserDetailsService userDetailsService;
     
     //@Autowired
     //private AuthenticationManager authenticationManager;
@@ -53,5 +57,13 @@ public class AuthenticationService {
     
     public List<User> getAllUsers() {
          return userRepository.findAll();
-     }
+    }
+    
+    public User getUser(String userName) {
+        return userRepository.findByUsername(userName).orElse(null);
+   }
+    
+    public UserDetails getUserDetails(String userName) {
+    	return userDetailsService.loadUserByUsername(userName);
+    }
 }
